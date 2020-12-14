@@ -1,0 +1,2558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AttributeFilterPolicyGroup id="ShibbolethFilterPolicy"
+                            xmlns="urn:mace:shibboleth:2.0:afp"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:schemaLocation="urn:mace:shibboleth:2.0:afp http://shibboleth.net/schema/idp/shibboleth-afp.xsd">
+
+    <!-- Release attributes to Service-Now -->
+    <AttributeFilterPolicy id="service-now.com">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(ucbtest|ucb|ucbdev|berkeleydev|berkeleydev2|berkeleytest|berkeleytest2|berkeley|berkeleytemp1|berkeleytemp).service-now.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliationHT">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Start Housing -->
+    <AttributeFilterPolicy id="housing">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(|new-)test-portal.housing.berkeley.edu/StarRezWebDev/" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu:berkeley:org:rssp:Applications:StarRez:.*" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Housing -->
+
+    <!-- Start Unifier Primavera -->
+    <AttributeFilterPolicy id="unifier-primavera">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ucberk-primavera-idm.oracleindustry.com/oam/fed" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Unifier Primavera -->
+
+
+    <!-- Release attributes to github-dev -->
+    <AttributeFilterPolicy id="github-dev">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://github-(|dev|test).berkeley.edu" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to Google-testg -->
+    <AttributeFilterPolicy id="google-testg">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="google.com/a/(testg|bcaltest4).berkeley.edu" />
+
+        <AttributeRule attributeID="altID">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes to Haas Salesforce -->
+    <AttributeFilterPolicy id="hass-salesforce">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://haas--Dev.cs18.my.salesforce.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes to YuTins  Salesforce -->
+    <AttributeFilterPolicy id="yutin-salesforce">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://berkeley(|--dev.cs14).my.salesforce.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes to IPIRA  Salesforce -->
+    <AttributeFilterPolicy id="ipira salesforce">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ipira.my.salesforce.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to UREL Salesforce -->
+    <AttributeFilterPolicy id="urel-salesforce">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://cads--qa.cs94.my.salesforce.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to gallery ( webdam)  -->
+    <AttributeFilterPolicy id="gallery-webdam">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://gallery.berkeley.edu/saml.php" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes for gallery (webdam) -->
+
+
+    <!-- Release attributes (UCNetId, Assurance, and UCShortId) to SumTotal -->
+    <AttributeFilterPolicy id="sumTotalSystems">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(uca|ucastage|imp39|uca82stage|uc)\.sumtotalsystems.com.*" />
+
+        <AttributeRule attributeID="UCNetId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="basicAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="UCShortId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (ePPN) to test server kualiready, -qa, -dev  -->
+    <AttributeFilterPolicy id="kualiready">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://us(|1)\.ready(|-dev|-qa)\.kuali\.org.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="title">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="telephoneNumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uctrustAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (ePPN) to test VM server kualiready-dev-demo  -->
+    <AttributeFilterPolicy id="kualiready">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://kualiready-dev-demo.berkeley.edu/shibboleth-sp" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="title">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="telephoneNumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uctrustAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes (ePPN) to test server ucready, -qa, -dev  -->
+    <AttributeFilterPolicy id="ucready">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ucready(|-dev|-qa)\.berkeley.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="title">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="telephoneNumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uctrustAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+
+    <!-- Release attributes (ePPN) to test server cfdevwebfarmv  -->
+    <AttributeFilterPolicy id="cfdevwebfarm">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://cfdevwebfarm\.berkeley\.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="title">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="telephoneNumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uctrustAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to test server shib-sp1  -->
+    <AttributeFilterPolicy id="shib-sp1">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://shib-sp1.calnet.1918.berkeley.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="commonName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu_berkeley_org_nos.*" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to test server zimride  -->
+    <AttributeFilterPolicy id="zimride">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://www.zimride.com.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- URELs advance servers -->
+    <!-- Release attributes (calnetId) to urel advance servers  -->
+    <AttributeFilterPolicy id="advance">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://advance(1|2|dl).berkeley.edu.*" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes (calnetId) to urel advance servers  -->
+    <AttributeFilterPolicy id="urboe">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://urboe(1|2).berkeley.edu.*" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (calnetId) to test server ureltest  -->
+    <AttributeFilterPolicy id="ureltest">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ureltest.urel.berkeley.edu.*" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (calnetId) to test server ureltest  -->
+    <AttributeFilterPolicy id="urbi-devweb">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://urbi-devweb1.urel.berkeley.edu/shibboleth-sp" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (UCNetId, Assurance) to AYSO -->
+    <AttributeFilterPolicy id="AYSO">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(sseqa|atyourserviceonline)\.ucop.edu.*" />
+
+        <AttributeRule attributeID="UCNetId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="basicAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attribute ePPN to spaces.internet2.edu  -->
+    <AttributeFilterPolicy id="SI2">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://spaces.internet2.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes (ePPN, UCNetId) to Windows test server shib-dweb01  -->
+    <AttributeFilterPolicy id="dWeb01">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://shib-dweb01.ist.berkeley.edu/.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="UCNetId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes (UCNetId, Assurance, and UCShortId) to is-jms01 -->
+    <AttributeFilterPolicy id="is-jms01">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://is-jms01.ist.berkeley.edu.*" />
+
+        <AttributeRule attributeID="UCNetId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="basicAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="UCShortId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Release attributes to test server ipd and spaces.ebi  -->
+    <AttributeFilterPolicy id="ipd-spaces.ebi">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(ipd|spaces|spacesy).ebi.berkeley.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- End Release attributes to test server spaces.ebi  -->
+
+
+    <!-- Release attributes to test server UC Proposalsi  -->
+    <AttributeFilterPolicy id="ucproposals">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ucproposals(|-qa|-dev).berkeley.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to test server catertrax  -->
+    <AttributeFilterPolicy id="catertrax">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://calcateringtogo.catertrax.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="telephoneNumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to test server b2h sandbox  -->
+    <AttributeFilterPolicy id="b2h">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://b2hsandbox-dev.berkeley.edu/shibboleth-sp*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to CalShare dev  -->
+    <AttributeFilterPolicy id="calshare">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://calsharedevshib.berkeley.edu/shibboleth" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to Bamboo Project  -->
+    <AttributeFilterPolicy id="projectbamboo">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://.*.projectbamboo.org/shibboleth-sp" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+
+    <!-- Release attributes to Box.net  -->
+    <AttributeFilterPolicy id="box.net">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^box.net" />
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to test server aprecruit  -->
+    <AttributeFilterPolicy id="aprecruit">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://aprecruit.berkeley.edu:31006/shibboleth-sp" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to test server aprecruit  -->
+
+
+
+
+    <!-- Release attributes to ermsp ucop.edu   -->
+    <AttributeFilterPolicy id="ermsp">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ermsp*.ucop.edu*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="UCNetId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="cn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to ermsp ucop.edu   -->
+
+
+    <!-- Release attributes to test server for imaginatik  -->
+    <AttributeFilterPolicy id="imaginatik-test">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="ucb:imaginatik:saml2:test" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="middleInitial">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="identifier1">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="identifier2">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="identifier3">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="identifier4">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to test server for imaginatik  -->
+
+    <!-- Release attributes to research hub -->
+    <AttributeFilterPolicy id="research-hub-test">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://hub-test-2.ist.berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://hub-dev-old.1918.berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://hub-dev.berkeley.edu" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bepdu">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="departmentnumber">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbtestidflag">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="beaff">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to research hub  -->
+
+
+    <!-- CalTime test SP -->
+    <!-- Begin kro62-xw02 -->
+    <AttributeFilterPolicy id="kro62-xw02">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://kro62(|-dw03|-xw02).ist.1918.berkeley.edu/wfc" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://caltimeqa.berkeley.edu/wfc" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End kro62-xw02 -->
+
+    <!-- Begin Aetna-test -->
+    <AttributeFilterPolicy id="Aetna-test">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://aetna.com/aetna-studenthealth-provider/dp-sp" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="aetna-ucbstuid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Aetna-test -->
+
+    <!-- <PermitValueRule xsi:type="Value" value="edu:berkeley:apps:kb" /> -->
+    <!-- KB test -->
+    <AttributeFilterPolicy id="isMemberOfRuleExample">
+        <PolicyRequirementRule
+                xsi:type="Requester"
+                value="https://sp.example.org/shibboleth" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Begin Parking and Transportation using T2 -->
+    <AttributeFilterPolicy id="park-trans-T2">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://staging-ucberkeley.t2hosted.com/UCBERSA1" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbstuid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbaffid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbempid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbemptitlecode">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="beaff">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Parking and Transportation using T2 -->
+
+
+    <!-- Release attributes to California-Alliance AGEP  -->
+    <AttributeFilterPolicy id="agep">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^http://test-agep.pantheon.berkeley.edu/simplesaml-sp" />
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to AGEP  -->
+
+    <!-- Release attributes to RSAM app from Security group -->
+    <AttributeFilterPolicy id="rsam-security">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://rsam-dev.security.berkeley.edu/shibboleth-sp" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to RSAM app from Security group -->
+
+
+    <!-- Begin edx -->
+    <AttributeFilterPolicy id="edx">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://edge.edx.org/saml" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^http://saml.sandbox5.opencraft.com/" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://courses.stage.edx.org/saml" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End edx -->
+
+    <!-- Release attributes to CollegeNet  -->
+    <AttributeFilterPolicy id="collegenet">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://corp.collegenet.com/shibboleth-sp/" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="Value" value="edu:berkeley:app:sis:collegenet-access" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to CollegeNet -->
+
+
+    <!-- Release attributes to UDAR (UREL) gitlab -->
+    <AttributeFilterPolicy id="UDAR Gitlab">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://gitlab.urel.berkeley.edu/shibboleth-sp" />
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to UDAR (UREL) gitlab  -->
+
+
+    <!-- Release attributes to UDAR (UREL) RD Dev -->
+    <AttributeFilterPolicy id="UDAR RD Dev">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://rd-dev01.urel.berkeley.edu/shibboleth-sp" />
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to UDAR (UREL) RD Dev  -->
+
+    <!-- Start release attributes to ExactTarget (UDAR) -->
+    <AttributeFilterPolicy id="exactTarget">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://sp.exacttarget.com/shibboleth-sp" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to ExactTarget (UDAR) -->
+
+    <!-- Start release attributes to RideAmigos -->
+    <AttributeFilterPolicy id="rideAmigos">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="rideamigos-unity-berkeley-develop" />
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to RideAmigos  -->
+
+
+    <!-- Start release attributes to OLACIS -->
+    <AttributeFilterPolicy id="olacis">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://olacis.berkeley.edu" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to OLACIS  -->
+
+
+    <!-- Start Haas vMock -->
+    <AttributeFilterPolicy id="haas-vMock">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://shibbodev.vmock.com/vmock/shibboleth-sp" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Haas vMock -->
+
+    <!-- Start GoAnywhere -->
+    <AttributeFilterPolicy id="GoAnywhere">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://ucmft-dev.berkeley.edu" />
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Haas vMock -->
+
+    <!-- Start libproxy -->
+    <AttributeFilterPolicy id="libproxy">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://shibboleth.libproxy(|-dev|-test).berkeley.edu/shibboleth" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="Value" value="edu:berkeley:org:libr:ezproxy:ezproxy_access" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End libproxy -->
+
+    <!-- Start bSecure -->
+    <AttributeFilterPolicy id="bSecure">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://(|ewdc-|sut-)panorama-1.net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://panorama.net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://ewdc-cage-(|fw1|fw2).net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://sut-mdc-(|fw1|fw2).net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo-03-(|fw1|fw2|fw3|fw4).net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://isp-pan.security.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://dev-panorama-1.net.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://dev-panorama.net.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu:berkeley:org:nos.*" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End bSecure -->
+
+    <!-- Start new vpn -->
+    <AttributeFilterPolicy id="PAN-VPN">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="urn:mace:ra_vpn_gp_campus:berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="urn:mace:ra_vpn_gp_restricted:berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo-campus.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo-restricted.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo-campus-split.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://moo-auto.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu:berkeley:app:rans:.*" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End new vpn -->
+
+    <!-- Start VPN for RANS #1 -->
+    <!-- The difference between these configs is in the isMemberOf attribute. PAN had an issue with more than 2 group names -->
+    <AttributeFilterPolicy id="vpn-rans-1">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus-split.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://userid.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://auto.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="OR">
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Full" ignoreCase="true"/>
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Core" ignoreCase="true"/>
+            </PermitValueRule>
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End VPN for RANS #1 -->
+
+
+    <!-- Start VPN for RANS #2 -->
+    <!-- The difference between these configs is in the isMemberOf attribute. PAN had an issue with more than 2 group names -->
+    <AttributeFilterPolicy id="vpn-rans-2">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://restricted.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="OR">
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Restricted" ignoreCase="true"/>
+            </PermitValueRule>
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End VPN for RANS #2-->
+
+
+    <!-- Start VPN for RANS, second round #1-->
+    <!-- These two configs are different only in the URLs and isMemberOf -->
+    <AttributeFilterPolicy id="vpn-rans-2-1">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://vpn-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://vpn-dev.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://ssl-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://ssl-dev.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus-dev.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus-split-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://campus-split-dev.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://userid-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://userid-dev.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="OR">
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Full" ignoreCase="true"/>
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Core" ignoreCase="true"/>
+            </PermitValueRule>
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End VPN for RANS, second round #1 -->
+
+
+    <!-- Start VPN for RANS, second round #2-->
+    <!-- These two configs are different only in the URLs and isMemberOf -->
+    <AttributeFilterPolicy id="vpn-rans-2-2">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://auto-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://auto-dev.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="OR">
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Full" ignoreCase="true"/>
+            </PermitValueRule>
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End VPN for RANS, second round #2 -->
+
+
+    <!-- Start VPN for RANS, second round #3-->
+    <!-- These two configs are different only in the URLs and isMemberOf -->
+    <AttributeFilterPolicy id="vpn-rans-2-3">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://restricted-qa.vpn.berkeley.edu:443/SAML20/SP" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://restricted-dev.vpn.berkeley.edu:443/SAML20/SP" />
+        </PolicyRequirementRule>
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="OR">
+                <Rule xsi:type="Value" value="edu:berkeley:app:rans:Remote-Access-Restricted" ignoreCase="true"/>
+            </PermitValueRule>
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End VPN for RANS, second round #3 -->
+
+
+
+
+    <!-- Release attributes to Administrative IT Salesforce -->
+    <AttributeFilterPolicy id="student-affairs-salesforce">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://sabusops--UCBTest.cs19.my.salesforce.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+    <!-- Start Yellow Schedule -->
+    <AttributeFilterPolicy id="yellow-schedule">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://www.yellowschedule.com/app/booking/make-booking.php" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ucbstuid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Yellow Schedule -->
+
+    <!-- Release attributes to Cloudera for Haas -->
+    <AttributeFilterPolicy id="cloudera-test-haas">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^http://phd-research.haas.berkeley.edu:8889" />
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to sharepoint@UCOP  -->
+    <AttributeFilterPolicy id="sp.ucop">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://sp(2010|sts|sandbox|qa2010|stsdev).ucop.edu.*" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="cn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="basicAssurance">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to sharepoint@ucop  -->
+
+    <!-- Start tableau server for urel -->
+    <AttributeFilterPolicy id="urel-tableau">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://tableau-sb.urel.berkeley.edu/samlservice/public/sp/metadata.*" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+    <!--  End tableau server for urel -->
+
+    <!-- Release attributes to Telecom's Pinnacle server -->
+    <AttributeFilterPolicy id="telecom-pinnacle">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://limestone.calero.com/shibboleth" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to amazon webservices -->
+    <AttributeFilterPolicy id="amazon-webservices">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="urn:amazon:webservices" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="awsRoles">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="awsRoleSessionName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+    <!-- Start Docusign -->
+    <AttributeFilterPolicy id="docusign">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://account-d.docusign.com/organizations/c5fc53cf-fecb-43e1-93fe-c73a04b71a8f/saml2" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://account.docusign.com/organizations/5f2f3ce5-a572-4868-bf21-d42f177ff6a4/saml2" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf_short">
+            <PermitValueRule xsi:type="ValueRegex" regex="^[0-9]*$" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- edu:berkeley:org:img:SYSTEM_ONLY_GROUPS:DocuSign_UCB_Users.* -->
+    <!-- End Docusign -->
+
+    <!-- Release attributes to Tind for Law school -->
+    <AttributeFilterPolicy id="tind.io-lawschool">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://berkeleylaw.tind.io/shibboleth" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to Net docs @ ucop -->
+    <AttributeFilterPolicy id="net-docs-ucop">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://netdocs.ucop.edu" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to Modo labs -->
+    <!-- We have this setup in shib and shib-test configs so the modolabs config can be used with each -->
+    <!-- We are using the same config for different SPs within the modolabs world -->
+    <!-- marketplace requires two extra attributes. 1) is the mail which we are supplying via altID -->
+    <!-- and 2) a persistent NameID using uid. The NameID specification was added to their metadata  for marketplace -->
+    <AttributeFilterPolicy id="modo-labs">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://ucalberkeley-(|test|edit|prod).modolabs.net/_saml/module.php/saml/sp/metadata.php/ucberkeley_saml" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://marketplace.modolabs.net/auth/ucberkeleymarketplace/sso/saml/metadata" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://studentsbx-(|prod|test|edit).modolabs.net/_saml/module.php/saml/sp/metadata.php/ucberkeley_saml" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://ucberk-sbx-(|prod|test|edit).modolabs.net/_saml/module.php/saml/sp/metadata.php/ucberkeley_saml" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu:berkeley:*" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="altID">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to Mathworks -->
+    <AttributeFilterPolicy id="mathworks-matlab">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://www.mathworks.com/edu-sp" />
+
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Start Release attributes (calnetId) to Duo  -->
+    <AttributeFilterPolicy id="Duo-admin">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://admin-6b447a0c.duosecurity.com/saml/DAZQRGKUZSOZTDFTID3L/metadata" />
+
+        <AttributeRule attributeID="altID">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes (calnetId) to Duo  -->
+
+
+    <!-- Start Confluence for Haas -->
+    <AttributeFilterPolicy id="confluence-for-haas">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://cmg.haastech.org" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Confluence for Haas -->
+
+    <!-- Start IDC for library -->
+    <AttributeFilterPolicy id="idc-library">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="urn:idc:authentication:saml2:entity:cas:saml-2017:berkeleyunitest" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="urn:idc:authentication:saml2:entity:cas:prod-2016:berkeleyuniprod" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End IDC for library -->
+
+
+    <!-- Start Xfinity for RSSP -->
+    <AttributeFilterPolicy id="xfinity-rssp">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://xoc-staging.sp.comcast.com" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="eduPersonScopedAffiliation">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="Value" value="edu:berkeley:org:rssp:Applications:XfinityOnCampus:XOC-eligible" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Confluence for Haas -->
+
+    <!-- Start Release attributes UCOP-UCPATH-DRPIT03  -->
+    <AttributeFilterPolicy id="UCOP-UCPath-DRPIT03">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://drpit03.universityofcalifornia.edu" />
+
+        <AttributeRule attributeID="ucpathemplid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes UCOP-UCPATH-DRPIT03  -->
+
+    <!-- This should be replaced when the UAT attribute is again available -->
+    <!-- <AttributeRule attributeID="ucpathuatidemplid"> -->
+
+    <!-- Start Release attributes UCOP-UCPATH-D1UAT 03  -->
+    <AttributeFilterPolicy id="UCOP-UCPath-D1UAT">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://d1uat03.universityofcalifornia.edu" />
+
+        <AttributeRule attributeID="ucpathemplid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes UCOP-UCPATH-D1UAT 03  -->
+
+
+    <!-- Release attributes to  UCPATH PLUAT and PUAT -->
+    <AttributeFilterPolicy id="ucpath-pluat-puat">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://(|drppuat02|drpuat03|drppuat|puat).universityofcalifornia.edu/" />
+
+        <AttributeRule attributeID="ucpathemplid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to UCPATH PLUAT and PUAT -->
+
+
+    <!-- Release attributes (calnetId) to IST Tableau servers  -->
+    <AttributeFilterPolicy id="ist-tableau">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://tableau-da01.ist.berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://calviz-dev.berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="^https://tableau-qa01.ist.berkeley.edu" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+
+
+    <!-- Release attributes to CommonVault for IST  -->
+    <AttributeFilterPolicy id="commonvault">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://sim-dw01.ist.berkeley.edu:443/webconsole" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to CommonVault for IST -->
+
+    <!-- Start Release attributes I-9 Tracker  -->
+    <AttributeFilterPolicy id="i-9_tracker">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://integrationdevsts.i9complete.com" />
+
+        <AttributeRule attributeID="uccampusempid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes I-9 Tracker  -->
+
+
+
+    <!-- Start 3DPrinter for CED  -->
+    <AttributeFilterPolicy id="3dprinter-for-ced">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://acorn.3dprinteros.com" />
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End 3DPrinter for CED -->
+
+
+    <!-- Start telecom clearpass -->
+    <AttributeFilterPolicy id="clearpass">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://sut-clearpass-1.net.berkeley.edu/networkservices/saml2/sp" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://sut-clearpass-2.net.berkeley.edu/networkservices/saml2/sp" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://sut-clearpass-3.net.berkeley.edu/networkservices/saml2/sp" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="https://dev-clearpass-1.net.berkeley.edu/networkservices/saml2/sp" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="isMemberOf">
+            <PermitValueRule xsi:type="ValueRegex" regex="edu:berkeley:app:wifi:.*" />
+        </AttributeRule>
+    </AttributeFilterPolicy>
+    <!-- End telecom clearpass -->
+
+
+
+    <!--Start attribute release to Slack for Haas -->
+    <AttributeFilterPolicy id="haas-slack">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://slack.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!--End attribute release to Slack for Haas-->
+
+
+    <!-- Release attributes to  tenable.sc-->
+    <AttributeFilterPolicy id="tenable.sc-secuirty-team">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="tenable.sc" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to tenable.sc-->
+
+
+    <!-- Release attributes to CrashPlan - CED  -->
+    <AttributeFilterPolicy id="CrashPlan-CED">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://ced-iit-crashkey.ced.berkeley.edu:4285" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="mail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Release attributes to CrashPlan - CED  -->
+
+
+    <!-- Release attributes to  PingBoard for Haas-->
+    <AttributeFilterPolicy id="pingboard-haas">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="http://app.pingboard.com/sp" />
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to PingBoard for Haas c-->
+
+
+    <!-- Release attributes to  CalAnswers-->
+    <AttributeFilterPolicy id="calanswers">
+        <PolicyRequirementRule xsi:type="OR">
+            <Rule xsi:type="RequesterRegex"
+                  regex="calanswers-sandbox.berkeley.edu" />
+            <Rule xsi:type="RequesterRegex"
+                  regex="obi-dev-02.ist.berkeley.edu" />
+        </PolicyRequirementRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to CalAnswers -->
+
+
+    <!-- Release attributes to ISORA -->
+    <AttributeFilterPolicy id="isora-test">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://berkeley-test.isora.saltycloud.com" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to ISORA -->
+
+    <!-- Release attribute ePPN to Michelangelo Pro test -->
+    <AttributeFilterPolicy id="michelangelo-pro-test">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="^https://test.michelangelopro.com" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to Michelangelo Pro test -->
+
+
+    <!--Start attribute release to Dow Joes/Wall Street Journal for ASUC (INC0974378) -->
+    <AttributeFilterPolicy id="dowJones-wallStreetJournal">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="DOWJONES" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!--End attribute release to Dow Joes/Wall Street Journal for ASUC -->
+
+    <!-- Release attributes to  AWS SSO-->
+    <AttributeFilterPolicy id="aws-sso-d-92671968d0">
+        <PolicyRequirementRule xsi:type="RequesterRegex" regex="https://us-west-2.signin.aws.amazon.com/platform/saml/d-92671968d0" />
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to AWS SSO -->
+
+
+    <!-- Release attributes to  RockSoft for UCSF (RITM1001570) -->
+    <AttributeFilterPolicy id="rocksoft">
+        <PolicyRequirementRule xsi:type="RequesterRegex" regex="https://ucsf.rocsoft.com/shibboleth" />
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to RockSoft for UCSF -->
+
+
+    <!-- Release attributes to CBT PraireLearner for EECS (RITM1001895) -->
+    <AttributeFilterPolicy id="cb1-eecs">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://cbt-dev.berkeley.edu/shibboleth" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to CBT PraireLearner for EECS (RITM1001895) -->
+
+
+    <!-- Release attributes to eSirius for Animal Research Facility (RITM1001927) -->
+    <AttributeFilterPolicy id="eSirius-olac">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://cal.stg-esirius.cayuse.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release attributes to eSirius for Animal Research Facility (RITM1001927) -->
+
+
+    <!-- Start attribute release for Test Kaltura MediaSpace (RITM1002043) -->
+    <AttributeFilterPolicy id="kaltura-test-mediaspace">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://ucb-test.mediaspace.kaltura.com" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="beaff">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="ePPN">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="altID-OID">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End attribute release for Test Kaltura MediaSpace (RITM1002043) -->
+
+    <!-- Attribute release for Azure AD -->
+    <AttributeFilterPolicy id="PolicyForMicrosoftAzureAD">
+        <PolicyRequirementRule xsi:type="Requester" value="urn:federation:MicrosoftOnline" />
+
+        <!-- Release mail as Azure AD User ID -->
+        <AttributeRule attributeID="UserId">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <!-- Release ImmutableID to Azure AD -->
+        <AttributeRule attributeID="ImmutableID">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End Attribute release for Azure AD -->
+
+    <!-- Start release for UCPath SIT instance  (from uctrust site) -->
+    <AttributeFilterPolicy id="ucop-sit-instance">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://drpit0(|1|2|3).universityofcalifornia.edu" />
+
+        <AttributeRule attributeID="ucpathemplid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release for UCPath SIT instance  (from uctrust site) -->
+
+
+    <!-- Start release for EMS at Law  (RITM1002440) -->
+    <AttributeFilterPolicy id="ems-law">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://farnsworth.law.berkeley.edu/EMSPlatform" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release for EMS at Law  (RITM1002440) -->
+
+    <!-- Start release for CareBubbles for Chancellor's Immed Off  (RITM1002959) -->
+    <AttributeFilterPolicy id="carebubbles-Chanc-Immed-Off">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="https://test-carebubbles.pantheon.berkeley.edu/simplesaml/module.php/saml/sp/metadata.php/default-sp" />
+
+        <AttributeRule attributeID="uid">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release for CareBubbles for Chancellor's Immed Off  (RITM1002959) -->
+
+
+    <!-- Start release for Business Insider for Haas  (REQ1001555) -->
+    <AttributeFilterPolicy id="business-insider-haas">
+        <PolicyRequirementRule
+                xsi:type="RequesterRegex"
+                regex="urn:auth0:insider-authentication:berkeley" />
+
+        <AttributeRule attributeID="bekps">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="displayName">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="givenname">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="sn">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+        <AttributeRule attributeID="berkeleyOfficialEmail">
+            <PermitValueRule xsi:type="ANY" />
+        </AttributeRule>
+
+    </AttributeFilterPolicy>
+    <!-- End release for Business Insider for Haas  (REQ1001555) -->
+
+
+</AttributeFilterPolicyGroup>
+
