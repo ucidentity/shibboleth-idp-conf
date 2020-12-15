@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<AttributeResolver
+        xmlns="urn:mace:shibboleth:2.0:resolver"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:mace:shibboleth:2.0:resolver http://shibboleth.net/schema/idp/shibboleth-attribute-resolver.xsd">
+
+    <!-- ========================================== -->
+    <!--      Attribute Definitions                 -->
+    <!-- ========================================== -->
+
+    <!-- computedID -->
+    <AttributeDefinition id="computedID" xsi:type="Simple" >
+        <InputDataConnector ref="ComputedIDConnector" attributeNames="computedID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113730.3.1.2" friendlyName="computedID" />
+    </AttributeDefinition>
+
+
+    <!-- uid -->
+    <AttributeDefinition id="uid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="uid" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:0.9.2342.19200300.100.1.1" friendlyName="uid" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduPrimaryDeptUnit -->
+    <AttributeDefinition id="bepdu" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduPrimaryDeptUnit" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.19" friendlyName="berkeleyEduPrimaryDeptUnit" />
+    </AttributeDefinition>
+
+
+    <!-- departmentNumber -->
+    <AttributeDefinition id="departmentnumber" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="departmentNumber" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113730.3.1.2" friendlyName="departmentNumber" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduTestIDFlag - alias ucbtestidflag -->
+    <AttributeDefinition id="ucbtestidflag" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduTestIDFlag" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.11" friendlyName="ucbtestidflag" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduStuID - alias ucbstuid-->
+    <AttributeDefinition id="ucbstuid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduStuID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.4.1" friendlyName="berkeleyEduStuID" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduStuID - alternate alias aetna-ucbstuid for atena-->
+    <AttributeDefinition id="aetna-ucbstuid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduStuID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.4.1" friendlyName="ucbstuid" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduAffID - alias ucbaffid-->
+    <AttributeDefinition id="ucbaffid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduAffID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.2.1" friendlyName="berkeleyEduAffID" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduEmpID - alias ucbempid-->
+    <AttributeDefinition id="ucbempid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="employeeNumber" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.1466.115.121.1.15" friendlyName="berkeleyEduEmpID" />
+    </AttributeDefinition>
+
+
+    <!-- UC Campus Employee ID for I-9 Tracker -->
+    <AttributeDefinition id="uccampusempid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="employeeNumber" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113916.1.1.6" friendlyName="UC_Campus_Employee_ID" />
+    </AttributeDefinition>
+
+
+    <!-- UC Path Empl ID, commented until available -->
+    <AttributeDefinition id="ucpathemplid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP-UCPATH" attributeNames="berkeleyEduUCPathID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113730.3.1.3" friendlyName="UCPathEmplId" />
+    </AttributeDefinition>
+
+
+    <!-- UC Path EmplID for ITID 03  -->
+    <AttributeDefinition id="ucpathitidemplid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP-UCPATH" attributeNames="berkeleyEduUCPathID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113730.3.1.3" friendlyName="UCPathEmplId" />
+    </AttributeDefinition>
+
+
+    <!-- UC Path EmplID for D1 UAT  -->
+    <AttributeDefinition id="ucpathuatidemplid" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP-UCPATH" attributeNames="berkeleyEduUCPathUATId" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113730.3.1.3" friendlyName="UCPathEmplId" />
+    </AttributeDefinition>
+
+
+    <!-- isMemberOf sourceAttributeID="berkeleyEduIsMemberOf" -->
+    <DataConnector  xsi:type="Static" id="forIsMemberOf">
+        <Attribute id="isMemberOf">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+
+    <AttributeDefinition id="isMemberOf" xsi:type="ScriptedAttribute"  >
+        <Dependency ref="LDAP" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.5.1.1" friendlyName="isMemberOf" />
+        <Script>
+            <![CDATA[
+		isMemberOf.getValues().clear(); // remove the dummy value
+		var groupName = "";
+		if (typeof berkeleyEduIsMemberOf !== 'undefined'){
+       		    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
+               				berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
+			groupName = "";
+			groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
+			groupName = groupName.split("=")[1];
+			isMemberOf.getValues().add(groupName);
+		    }
+       		}
+       	]]>
+        </Script>
+    </AttributeDefinition>
+
+    <!-- isMemberOf-short sourceAttributeID="berkeleyEduIsMemberOf" -->
+    <DataConnector  xsi:type="Static" id="forIsMemberOf_short">
+        <Attribute id="isMemberOf_short">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+
+    <AttributeDefinition id="isMemberOf_short" xsi:type="ScriptedAttribute"  >
+        <Dependency ref="LDAP" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.5.1.1" friendlyName="isMemberOf" />
+        <Script>
+            <![CDATA[
+		isMemberOf_short.getValues().clear(); // remove the dummy value
+		var groupName = "";
+		var theSplit;
+		if (typeof berkeleyEduIsMemberOf !== 'undefined'){
+       		    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
+               				berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
+			groupName = "";
+			groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
+			groupName = groupName.split("=")[1];
+			theSplit = groupName.split(":");
+			groupName = theSplit[theSplit.length-1];
+			isMemberOf_short.getValues().add(groupName);
+		    }
+       		}
+       	]]>
+        </Script>
+    </AttributeDefinition>
+
+    <!-- awsRoles -->
+    <AttributeDefinition id="awsRoles" xsi:type="Mapped" sourceAttributeID="berkeleyEduIsMemberOf">
+        <Dependency ref="LDAP"/>
+        <AttributeEncoder xsi:type="SAML2String" name="https://aws.amazon.com/SAML/Attributes/Role" friendlyName="Role" />
+        <ValueMap>
+            <ReturnValue>arn:aws:iam::$1:role/ucb-federated-$2,arn:aws:iam::$1:saml-provider/urn:mace:incommon:berkeley.edu</ReturnValue>
+            <SourceValue>cn=edu:berkeley:app:paws:federation:\d{12}:aws-(\d{12})-(\w*),ou=campus groups,dc=berkeley,dc=edu</SourceValue>
+        </ValueMap>
+    </AttributeDefinition>
+
+
+    <!-- awsRoleSessionName -->
+    <AttributeDefinition id="awsRoleSessionName" xsi:type="Simple" sourceAttributeID="berkeleyEduKerberosPrincipalString" >
+        <Dependency ref="LDAP"/>
+        <AttributeEncoder xsi:type="SAML2String" name="https://aws.amazon.com/SAML/Attributes/RoleSessionName" friendlyName="RoleSessionName" />
+    </AttributeDefinition>
+
+
+
+    <!-- berkeleyEduAffiliations -->
+    <AttributeDefinition id="beaff" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduAffiliations">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.7" friendlyName="berkeleyEduAffiliations" />
+    </AttributeDefinition>
+
+    <AttributeDefinition id="berkeleyEduAffiliations"
+                         xsi:type="Simple"
+                         xmlns="urn:mace:shibboleth:2.0:resolver"
+                         sourceAttributeID="berkeleyEduAffiliations">
+        <Dependency ref="LDAP" />
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.7"
+                          friendlyName="berkeleyEduAffiliations" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduEmpTitleCode - alias ucbemptitlecode-->
+    <AttributeDefinition id="ucbemptitlecode" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduEmpTitleCode">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.3.2" friendlyName="berkeleyEduEmpTitleCode" />
+    </AttributeDefinition>
+
+
+
+    <!-- UCnetId oid -->
+    <AttributeDefinition id="UCNetId"
+                         xsi:type="Simple"
+                         xmlns="urn:mace:shibboleth:2.0:resolver"
+                         sourceAttributeID="UCnetID">
+        <Dependency ref="LDAP" />
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.16.840.1.113916.1.1.4.1"
+                          friendlyName="UCNetId" />
+    </AttributeDefinition>
+
+    <!-- eduPersonAffiliation -->
+    <!-- create from berkeleyEduAffiliations -->
+    <DataConnector  xsi:type="Static" id="forEduPersonAffiliation">
+        <Attribute id="eduPersonAffiliation">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+    <AttributeDefinition id="eduPersonAffiliation"
+                         xsi:type="ScriptedAttribute" >
+        <Dependency ref="LDAP" />
+        <Dependency ref="forEduPersonAffiliation" />
+        <Dependency ref="berkeleyEduAffiliations" />
+        <DisplayName xml:lang="en">eduPersonAffiliation</DisplayName>
+        <DisplayDescription xml:lang="en">Affiliations in eduPerson format.</DisplayDescription>
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" friendlyName="eduPersonAffiliation" />
+        <Script>
+            <![CDATA[
+		eduPersonAffiliation.getValues().clear(); // remove the dummy value
+                if ( !(berkeleyEduAffiliations.getValues().contains("EMPLOYEE-STATUS-EXPIRED"))) {
+                        if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-STAFF")) {
+                                eduPersonAffiliation.getValues().add("staff");
+                        }
+                        if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-ACADEMIC")) {
+                                eduPersonAffiliation.getValues().add("faculty");
+                        }
+                        if ( eduPersonAffiliation.getValues().contains("staff") ||
+                                eduPersonAffiliation.getValues().contains("faculty")) {
+                                eduPersonAffiliation.getValues().add("employee");
+                        }
+                }
+               if ( !(berkeleyEduAffiliations.getValues().contains("STUDENT-STATUS-EXPIRED"))) {
+                        if (berkeleyEduAffiliations.getValues().contains("STUDENT-TYPE-REGISTERED")) {
+                                eduPersonAffiliation.getValues().add("student");
+                        }
+                  }
+                if ( !(berkeleyEduAffiliations.getValues().contains("AFFILIATE-STATUS-EXPIRED"))) {
+                        for (var i=0;
+                                i < berkeleyEduAffiliations.getValues().size() &&
+                                berkeleyEduAffiliations.getValues().get(i) != null; i++) {
+                                if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE")) {
+                                        eduPersonAffiliation.getValues().add("affiliate");
+                                }
+                        }
+                }
+
+                eduPersonAffiliation.getValues().add("member");
+
+                ]]>
+        </Script>
+    </AttributeDefinition>
+
+    <!-- eduPersonScopedAffiliation -->
+
+    <AttributeDefinition id="eduPersonScopedAffiliation" xsi:type="Scoped"
+                         scope="berkeley.edu" sourceAttributeID="eduPersonAffiliation">
+        <Dependency ref="eduPersonAffiliation" />
+
+        <AttributeEncoder xsi:type="SAML2ScopedString"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.1.1.9" friendlyName="eduPersonScopedAffiliation" />
+    </AttributeDefinition>
+
+
+    <!-- eduPersonAffiliationHT -->
+    <!-- create from berkeleyEduAffiliations -->
+    <!-- created for Hashi Trust (INC1119046)-->
+    <!-- Allows certain affiliate types to have the affiliate value where others will only get member -->
+    <!-- AFFILIATE-TYPE-LBL/DOE POSTDOC, AFFILIATE-TYPE-VISITING STU RESEARCHER, AFFILIATE-TYPE-VISITING SCHOLAR -->
+    <DataConnector  xsi:type="Static" id="forEduPersonAffiliationHT">
+        <Attribute id="eduPersonAffiliationHT">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+    <AttributeDefinition id="eduPersonAffiliationHT"
+                         xsi:type="ScriptedAttribute" >
+        <Dependency ref="LDAP" />
+        <Dependency ref="forEduPersonAffiliationHT" />
+        <Dependency ref="berkeleyEduAffiliations" />
+        <DisplayName xml:lang="en">eduPersonAffiliation</DisplayName>
+        <DisplayDescription xml:lang="en">Affiliations in eduPerson format.</DisplayDescription>
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" friendlyName="eduPersonAffiliation" />
+        <Script>
+            <![CDATA[
+                eduPersonAffiliationHT.getValues().clear(); // remove the dummy value
+                for (var i=0;
+                     i < berkeleyEduAffiliations.getValues().size() &&
+                     berkeleyEduAffiliations.getValues().get(i) != null; i++) {
+                        if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("EMPLOYEE-TYPE-STAFF")) {
+                                eduPersonAffiliationHT.addValue("staff");
+                        }
+                        if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("EMPLOYEE-TYPE-ACADEMIC")) {
+                                eduPersonAffiliationHT.addValue("faculty");
+                        }
+                        if (berkeleyEduAffiliations.getValues().contains("STUDENT-TYPE-REGISTERED") ||
+                           berkeleyEduAffiliations.getValues().contains("STUDENT-TYPE-NOT REGISTERED")) {
+                               eduPersonAffiliationHT.addValue("student");
+                        }
+                        if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE-LBL/DOE POSTDOC") ||
+			 	    berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE-VISITING STU RESEARCHER") ||
+                                    berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE-VISITING SCHOLAR")) {
+                                        eduPersonAffiliationHT.addValue("affiliate");
+                        }
+		}
+                if ( eduPersonAffiliationHT.getValues().contains("staff") ||
+                                eduPersonAffiliationHT.getValues().contains("faculty")) {
+                                eduPersonAffiliationHT.addValue("employee");
+                }
+
+                eduPersonAffiliationHT.addValue("member");
+
+                ]]>
+        </Script>
+    </AttributeDefinition>
+
+
+    <!-- eduPersonScopedAffiliationHT -->
+    <!-- This attribute is created for Hashi Trust -->
+    <AttributeDefinition id="eduPersonScopedAffiliationHT" xsi:type="Scoped"
+                         scope="berkeley.edu" sourceAttributeID="eduPersonAffiliationHT">
+        <Dependency ref="eduPersonAffiliationHT" />
+
+        <AttributeEncoder xsi:type="SAML2ScopedString"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.1.1.9" friendlyName="eduPersonScopedAffiliation" />
+    </AttributeDefinition>
+
+
+
+    <!-- UCShortId -->
+
+    <DataConnector  xsi:type="Static" id="forUCShortId">
+        <Attribute id="UCShortId">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+
+    <AttributeDefinition id="UCShortId"
+                         xsi:type="ScriptedAttribute" >
+        <Dependency ref="uid" />
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.16.840.1.113916.1.1.7"
+                          friendlyName="UCShortId" />
+        <Script>
+            <![CDATA[
+		UCShortId.getValues().clear(); // remove the dummy value
+               	UCShortId.getValues().add("BE" + uid.getValues());
+               ]]>
+        </Script>
+    </AttributeDefinition>
+
+
+    <!-- UC Trust level of assurance  oid -->
+    <!-- We will look to see if the person is staff, and assert the basic assurance -->
+
+    <DataConnector xsi:type="Static" id="forBasicAssurance">
+        <Attribute id="basicAssurance">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+    <AttributeDefinition id="basicAssurance"
+                         xsi:type="ScriptedAttribute" >
+        <Dependency ref="eduPersonAffiliation" />
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.16.840.1.113916.1.1.5"
+                          friendlyName="basicAssurance" />
+        <Script>
+            <![CDATA[
+		basicAssurance.getValues().clear(); // remove the dummy value
+		for (var i=0;
+			i < eduPersonAffiliation.getValues().size() &&
+			eduPersonAffiliation.getValues().get(i) != null; i++) {
+    		  if (eduPersonAffiliation.getValues().get(i).toLowerCase().contains("employee")) {
+                         basicAssurance.getValues().add("urn:mace:universityofcalifornia.edu:ucidentity:attributes:assurance:basic");
+		  }
+		}
+                ]]>
+        </Script>
+    </AttributeDefinition>
+
+
+
+    <!-- bekps -->
+    <AttributeDefinition id="bekps" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduKerberosPrincipalString">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.5.4" friendlyName="berkeleyEduKerberosPrincipalString" />
+    </AttributeDefinition>
+
+
+    <!-- ePPN -->
+    <AttributeDefinition id="ePPN"
+                         xsi:type="Scoped"
+                         scope="berkeley.edu" sourceAttributeID="bekps">
+
+        <Dependency ref="bekps" />
+        <AttributeEncoder xsi:type="SAML2ScopedString"
+                          name="urn:oid:1.3.6.1.4.1.5923.1.1.1.6"
+                          friendlyName="eduPersonPrincipalName" />
+    </AttributeDefinition>
+
+
+
+    <!-- berkeleyEduOfficialEmail -->
+    <AttributeDefinition id="berkeleyOfficialEmail" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduOfficialEmail">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:0.9.2342.19200300.100.1.3" friendlyName="mail" />
+    </AttributeDefinition>
+
+
+    <!-- berkeleyEduAlternateID -->
+    <AttributeDefinition id="altID" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduAlternateID">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:0.9.2342.19200300.100.1.3" friendlyName="mail" />
+    </AttributeDefinition>
+
+    <!-- berkeleyEduAlternateID using its own OID -->
+    <AttributeDefinition id="altID-OID" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduAlternateID">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.7.1" friendlyName="berkeleyEduAlternateID" />
+    </AttributeDefinition>
+
+    <!-- User.Email for Haas Slack -->
+    <AttributeDefinition id="slack.mail" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduOfficialEmail">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="User.Email" friendlyName="User.Email" />
+    </AttributeDefinition>
+
+    <!-- givenName -->
+    <AttributeDefinition id="givenname" xsi:type="Simple"
+                         sourceAttributeID="givenName">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.42" friendlyName="givenname" />
+    </AttributeDefinition>
+
+
+    <!-- surname -->
+    <AttributeDefinition id="sn" xsi:type="Simple"
+                         sourceAttributeID="sn">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.4" friendlyName="sn" />
+    </AttributeDefinition>
+
+
+    <!-- title -->
+    <AttributeDefinition id="title" xsi:type="Simple"
+                         sourceAttributeID="title">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.12" friendlyName="title" />
+    </AttributeDefinition>
+
+
+    <!-- mail -->
+    <AttributeDefinition id="mail" xsi:type="Simple"
+                         sourceAttributeID="mail">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:0.9.2342.19200300.100.1.3" friendlyName="mail" />
+    </AttributeDefinition>
+
+    <!-- telephoneNumber -->
+    <AttributeDefinition id="telephoneNumber" xsi:type="Simple"
+                         sourceAttributeID="telephoneNumber">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.20" friendlyName="telephoneNumber" />
+    </AttributeDefinition>
+
+
+    <!-- displayName -->
+    <AttributeDefinition id="displayName" xsi:type="Simple"
+                         sourceAttributeID="displayName">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.16.840.1.113730.3.1.241" friendlyName="displayName" />
+    </AttributeDefinition>
+
+    <!-- commonname -->
+    <AttributeDefinition id="commonName" xsi:type="Simple"
+                         sourceAttributeID="cn">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.3" friendlyName="cn" />
+    </AttributeDefinition>
+
+    <!-- begin attributes for imaginatik -->
+
+    <!-- middleInitial -->
+    <DataConnector  xsi:type="Static" id="formiddleInitial">
+        <Attribute id="middleInitial">
+            <Value>dummy</Value>
+        </Attribute>
+    </DataConnector>
+
+    <AttributeDefinition id="middleInitial"
+                         xsi:type="ScriptedAttribute" >
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:oid:2.5.4.43" friendlyName="middleInitial" />
+        <Script>
+            <![CDATA[
+		middleInitial.getValues().clear(); // remove the dummy value
+                middleInitial.getValues().add("");
+                ]]>
+        </Script>
+    </AttributeDefinition>
+
+
+    <!-- identifier1, EmpApptType  -->
+    <AttributeDefinition id="identifier1" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduEmpApptType">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:identifier1" friendlyName="identifier1" />
+    </AttributeDefinition>
+
+    <!-- identifier2, EmpRelationsCode  -->
+    <AttributeDefinition id="identifier2" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduEmpRelationsCode">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:identifier2" friendlyName="identifier2" />
+    </AttributeDefinition>
+
+
+    <!-- identifier3, Dept  -->
+    <AttributeDefinition id="identifier3" xsi:type="Simple"
+                         sourceAttributeID="departmentNumber">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:identifier3" friendlyName="identifier3" />
+    </AttributeDefinition>
+
+    <!-- identifier4, Unit/Hierarchy String  -->
+    <AttributeDefinition id="identifier4" xsi:type="Simple"
+                         sourceAttributeID="berkeleyEduDeptUnitHierarchyString">
+        <Dependency ref="LDAP" />
+
+        <AttributeEncoder xsi:type="SAML2String"
+                          name="urn:identifier4" friendlyName="identifier4" />
+    </AttributeDefinition>
+
+    <!-- end attributes for imaginatik -->
+
+
+    <!-- objectGUID for Azure AD ImmutableID -->
+    <AttributeDefinition id="ImmutableID" xsi:type="Simple" sourceAttributeID="objectGUID" activationConditionRef="Office365Condition">
+        <Dependency ref="LDAP-AD" />
+    </AttributeDefinition>
+    <!-- end objectGUID for Azure AD ImmutableID -->
+
+    <!-- mail for Azure AD User ID -->
+    <AttributeDefinition id="UserId" xsi:type="Simple" sourceAttributeID="userPrincipalName" activationConditionRef="Office365Condition">
+        <Dependency ref="LDAP-AD" />
+        <AttributeEncoder xsi:type="SAML2String" name="IDPEmail" friendlyName="UserId" />
+    </AttributeDefinition>
+    <!-- end mail for Azure AD User ID -->
+
+
+    <!-- ========================================== -->
+    <!--      Data Connectors                       -->
+    <!-- ========================================== -->
+
+
+    <!-- LDAP Connector -->
+    <DataConnector id="LDAP" xsi:type="LDAPDirectory"
+                   ldapURL="%{idp.attribute.resolver.LDAP.ldapURL}"
+                   baseDN="%{idp.attribute.resolver.LDAP.baseDN}"
+                   principal="%{idp.attribute.resolver.LDAP.bindDN}"
+                   principalCredential="%{idp.attribute.resolver.LDAP.bindDNCredential}"
+                   useStartTLS="%{idp.attribute.resolver.LDAP.useStartTLS:true}">
+        <FilterTemplate>
+            <![CDATA[
+            %{idp.attribute.resolver.LDAP.searchFilter}
+        ]]>
+        </FilterTemplate>
+        <ReturnAttributes>%{idp.attribute.resolver.LDAP.returnAttributes}</ReturnAttributes>
+        <!--
+            <dc:StartTLSTrustCredential id="LDAPtoIdPCredential" xsi:type="sec:X509ResourceBacked">
+                <sec:Certificate>%{idp.attribute.resolver.LDAP.trustCertificates}</sec:Certificate>
+            </dc:StartTLSTrustCredential>
+        -->
+    </DataConnector>
+
+    <!-- LDAP for UCPATH Connector -->
+    <DataConnector id="LDAP-UCPATH" xsi:type="LDAPDirectory"
+                   ldapURL="%{idp.attribute.resolver.LDAP-UCPATH.ldapURL}"
+                   baseDN="%{idp.attribute.resolver.LDAP-UCPATH.baseDN}"
+                   principal="%{idp.attribute.resolver.LDAP-UCPATH.bindDN}"
+                   principalCredential="%{idp.attribute.resolver.LDAP-UCPATH.bindDNCredential}"
+                   useStartTLS="%{idp.attribute.resolver.LDAP-UCPATH.useStartTLS:true}">
+        <FilterTemplate>
+            <![CDATA[
+            %{idp.attribute.resolver.LDAP-UCPATH.searchFilter}
+        ]]>
+        </FilterTemplate>
+        <ReturnAttributes>%{idp.attribute.resolver.LDAP-UCPATH.returnAttributes}</ReturnAttributes>
+    </DataConnector>
+
+    <DataConnector xsi:type="ComputedId"
+                   id="ComputedIDConnector"
+                   generatedAttributeID="computedID"
+                   sourceAttributeID="uid"
+                   salt="%{idp.persistentId.salt}">
+        <Dependency ref="LDAP" />
+    </DataConnector>
+
+    <!-- LDAP for AD Connector -->
+    <DataConnector id="LDAP-AD" xsi:type="LDAPDirectory"
+                   ldapURL="%{idp.attribute.resolver.LDAP-AD.ldapURL}"
+                   useStartTLS="%{idp.attribute.resolver.LDAP-AD.useStartTLS:true}"
+                   baseDN="%{idp.attribute.resolver.LDAP-AD.baseDN}"
+                   searchScope="SUBTREE"
+                   activationConditionRef="Office365Condition"
+                   principal="%{idp.attribute.resolver.LDAP-AD.bindDN}"
+                   principalCredential="%{idp.attribute.resolver.LDAP-AD.bindDNCredential}"
+                   connectTimeout="%{idp.attribute.resolver.LDAP-AD.connectTimeout:PT3S}"
+                   responseTimeout="%{idp.attribute.resolver.LDAP-AD.responseTimeout:PT3S}"
+    >
+        <ReturnAttributes>%{idp.attribute.resolver.LDAP-AD.returnAttributes}</ReturnAttributes>
+        <FilterTemplate>
+            <![CDATA[
+	%{idp.attribute.resolver.LDAP-AD.searchFilter}
+      ]]>
+        </FilterTemplate>
+        <LDAPProperty name="java.naming.ldap.attributes.binary" value="objectGUID" />
+        <ConnectionPool
+                minPoolSize="%{idp.pool.LDAP-AD.minSize:1}"
+                maxPoolSize="%{idp.pool.LDAP-AD.maxSize:10}"
+                blockWaitTime="%{idp.pool.LDAP-AD.blockWaitTime:PT3S}"
+                validatePeriodically="%{idp.pool.LDAP-AD.validatePeriodically:true}"
+                validateTimerPeriod="%{idp.pool.LDAP-AD.validateTimerPeriod:PT5M}"
+                expirationTime="%{idp.pool.LDAP-AD.expirationTime:PT10M}"
+                failFastInitialize="%{idp.pool.LDAP-AD.failFastInitialize:false}"
+        />
+    </DataConnector>
+
+</AttributeResolver>
