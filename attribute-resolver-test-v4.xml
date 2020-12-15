@@ -114,33 +114,26 @@
 
 
     <!-- isMemberOf sourceAttributeID="berkeleyEduIsMemberOf" -->
-    <DataConnector  xsi:type="Static" id="forIsMemberOf">
-        <Attribute id="isMemberOf">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
-
     <AttributeDefinition id="isMemberOf" xsi:type="ScriptedAttribute"  >
-        <Dependency ref="LDAP" />
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduIsMemberOf" />
         <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.5.1.1" friendlyName="isMemberOf" />
         <Script>
             <![CDATA[
-		isMemberOf.getValues().clear(); // remove the dummy value
-		var groupName = "";
-		if (typeof berkeleyEduIsMemberOf !== 'undefined'){
-       		    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
-               				berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
-			groupName = "";
-			groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
-			groupName = groupName.split("=")[1];
-			isMemberOf.getValues().add(groupName);
-		    }
-       		}
-       	]]>
+                var groupName = "";
+                if (typeof berkeleyEduIsMemberOf !== 'undefined'){
+                    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
+                                    berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
+                        groupName = "";
+                        groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
+                        groupName = groupName.split("=")[1];
+                            isMemberOf.getValues().add(groupName);
+                    }
+                }
+       	    ]]>
         </Script>
     </AttributeDefinition>
+
 
     <!-- isMemberOf-short sourceAttributeID="berkeleyEduIsMemberOf" -->
     <DataConnector  xsi:type="Static" id="forIsMemberOf_short">
