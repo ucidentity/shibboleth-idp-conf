@@ -136,40 +136,32 @@
 
 
     <!-- isMemberOf-short sourceAttributeID="berkeleyEduIsMemberOf" -->
-    <DataConnector  xsi:type="Static" id="forIsMemberOf_short">
-        <Attribute id="isMemberOf_short">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
-
-    <AttributeDefinition id="isMemberOf_short" xsi:type="ScriptedAttribute"  >
-        <Dependency ref="LDAP" />
-        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+     <AttributeDefinition id="isMemberOf_short" xsi:type="ScriptedAttribute"  >
+         <InputDataConnector ref="LDAP" attributeNames="berkeleyEduIsMemberOf" />
+         <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.5.1.1" friendlyName="isMemberOf" />
         <Script>
             <![CDATA[
-		isMemberOf_short.getValues().clear(); // remove the dummy value
-		var groupName = "";
-		var theSplit;
-		if (typeof berkeleyEduIsMemberOf !== 'undefined'){
-       		    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
-               				berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
-			groupName = "";
-			groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
-			groupName = groupName.split("=")[1];
-			theSplit = groupName.split(":");
-			groupName = theSplit[theSplit.length-1];
-			isMemberOf_short.getValues().add(groupName);
-		    }
-       		}
-       	]]>
+                var groupName = "";
+                var theSplit;
+                if (typeof berkeleyEduIsMemberOf !== 'undefined'){
+                    for (var i=0; i < berkeleyEduIsMemberOf.getValues().size() &&
+                                    berkeleyEduIsMemberOf.getValues().get(i) != null; i++) {
+                        groupName = "";
+                        groupName = berkeleyEduIsMemberOf.getValues().get(i).split(",")[0];
+                        groupName = groupName.split("=")[1];
+                        theSplit = groupName.split(":");
+                        groupName = theSplit[theSplit.length-1];
+                        isMemberOf_short.getValues().add(groupName);
+                    }
+                }
+            ]]>
         </Script>
     </AttributeDefinition>
 
     <!-- awsRoles -->
-    <AttributeDefinition id="awsRoles" xsi:type="Mapped" sourceAttributeID="berkeleyEduIsMemberOf">
-        <Dependency ref="LDAP"/>
+    <AttributeDefinition id="awsRoles" xsi:type="Mapped" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduIsMemberOf" />
         <AttributeEncoder xsi:type="SAML2String" name="https://aws.amazon.com/SAML/Attributes/Role" friendlyName="Role" />
         <ValueMap>
             <ReturnValue>arn:aws:iam::$1:role/ucb-federated-$2,arn:aws:iam::$1:saml-provider/urn:mace:incommon:berkeley.edu</ReturnValue>
@@ -179,115 +171,85 @@
 
 
     <!-- awsRoleSessionName -->
-    <AttributeDefinition id="awsRoleSessionName" xsi:type="Simple" sourceAttributeID="berkeleyEduKerberosPrincipalString" >
-        <Dependency ref="LDAP"/>
+    <AttributeDefinition id="awsRoleSessionName" xsi:type="Simple"  >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduKerberosPrincipalString" />
         <AttributeEncoder xsi:type="SAML2String" name="https://aws.amazon.com/SAML/Attributes/RoleSessionName" friendlyName="RoleSessionName" />
     </AttributeDefinition>
 
 
 
     <!-- berkeleyEduAffiliations -->
-    <AttributeDefinition id="beaff" xsi:type="Simple"
-                         sourceAttributeID="berkeleyEduAffiliations">
-        <Dependency ref="LDAP" />
-
+    <AttributeDefinition id="beaff" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduAffiliations" />
         <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.7" friendlyName="berkeleyEduAffiliations" />
     </AttributeDefinition>
 
-    <AttributeDefinition id="berkeleyEduAffiliations"
-                         xsi:type="Simple"
-                         xmlns="urn:mace:shibboleth:2.0:resolver"
-                         sourceAttributeID="berkeleyEduAffiliations">
-        <Dependency ref="LDAP" />
-        <AttributeEncoder xsi:type="SAML2String"
-                          name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.1.7"
-                          friendlyName="berkeleyEduAffiliations" />
-    </AttributeDefinition>
-
 
     <!-- berkeleyEduEmpTitleCode - alias ucbemptitlecode-->
-    <AttributeDefinition id="ucbemptitlecode" xsi:type="Simple"
-                         sourceAttributeID="berkeleyEduEmpTitleCode">
-        <Dependency ref="LDAP" />
-
-        <AttributeEncoder xsi:type="SAML2String"
+    <AttributeDefinition id="ucbemptitlecode" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduEmpTitleCode" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.3.2" friendlyName="berkeleyEduEmpTitleCode" />
     </AttributeDefinition>
 
 
-
     <!-- UCnetId oid -->
-    <AttributeDefinition id="UCNetId"
-                         xsi:type="Simple"
-                         xmlns="urn:mace:shibboleth:2.0:resolver"
-                         sourceAttributeID="UCnetID">
-        <Dependency ref="LDAP" />
-        <AttributeEncoder xsi:type="SAML2String"
-                          name="urn:oid:2.16.840.1.113916.1.1.4.1"
-                          friendlyName="UCNetId" />
+    <AttributeDefinition id="UCNetId" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="UCnetID" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113916.1.1.4.1" friendlyName="UCNetId" />
     </AttributeDefinition>
+
 
     <!-- eduPersonAffiliation -->
     <!-- create from berkeleyEduAffiliations -->
-    <DataConnector  xsi:type="Static" id="forEduPersonAffiliation">
-        <Attribute id="eduPersonAffiliation">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
-    <AttributeDefinition id="eduPersonAffiliation"
-                         xsi:type="ScriptedAttribute" >
-        <Dependency ref="LDAP" />
-        <Dependency ref="forEduPersonAffiliation" />
-        <Dependency ref="berkeleyEduAffiliations" />
+    <AttributeDefinition id="eduPersonAffiliation" xsi:type="ScriptedAttribute" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduAffiliations" />
         <DisplayName xml:lang="en">eduPersonAffiliation</DisplayName>
         <DisplayDescription xml:lang="en">Affiliations in eduPerson format.</DisplayDescription>
-        <AttributeEncoder xsi:type="SAML2String"
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" friendlyName="eduPersonAffiliation" />
         <Script>
             <![CDATA[
-		eduPersonAffiliation.getValues().clear(); // remove the dummy value
                 if ( !(berkeleyEduAffiliations.getValues().contains("EMPLOYEE-STATUS-EXPIRED"))) {
-                        if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-STAFF")) {
-                                eduPersonAffiliation.getValues().add("staff");
-                        }
-                        if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-ACADEMIC")) {
-                                eduPersonAffiliation.getValues().add("faculty");
-                        }
-                        if ( eduPersonAffiliation.getValues().contains("staff") ||
-                                eduPersonAffiliation.getValues().contains("faculty")) {
-                                eduPersonAffiliation.getValues().add("employee");
-                        }
+                    if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-STAFF")) {
+                            eduPersonAffiliation.getValues().add("staff");
+                    }
+                    if (berkeleyEduAffiliations.getValues().contains("EMPLOYEE-TYPE-ACADEMIC")) {
+                            eduPersonAffiliation.getValues().add("faculty");
+                    }
+                    if ( eduPersonAffiliation.getValues().contains("staff") ||
+                            eduPersonAffiliation.getValues().contains("faculty")) {
+                            eduPersonAffiliation.getValues().add("employee");
+                    }
                 }
-               if ( !(berkeleyEduAffiliations.getValues().contains("STUDENT-STATUS-EXPIRED"))) {
-                        if (berkeleyEduAffiliations.getValues().contains("STUDENT-TYPE-REGISTERED")) {
+                if ( !(berkeleyEduAffiliations.getValues().contains("STUDENT-STATUS-EXPIRED"))) {
+                    if (berkeleyEduAffiliations.getValues().contains("STUDENT-TYPE-REGISTERED")) {
                                 eduPersonAffiliation.getValues().add("student");
-                        }
-                  }
+                    }
+                }
                 if ( !(berkeleyEduAffiliations.getValues().contains("AFFILIATE-STATUS-EXPIRED"))) {
-                        for (var i=0;
-                                i < berkeleyEduAffiliations.getValues().size() &&
-                                berkeleyEduAffiliations.getValues().get(i) != null; i++) {
-                                if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE")) {
-                                        eduPersonAffiliation.getValues().add("affiliate");
-                                }
-                        }
+                    for (var i=0;
+                        i < berkeleyEduAffiliations.getValues().size() &&
+                        berkeleyEduAffiliations.getValues().get(i) != null; i++) {
+                            if (berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE")) {
+                                    eduPersonAffiliation.getValues().add("affiliate");
+                            }
+                    }
                 }
 
                 eduPersonAffiliation.getValues().add("member");
 
-                ]]>
+            ]]>
         </Script>
     </AttributeDefinition>
 
+
     <!-- eduPersonScopedAffiliation -->
-
-    <AttributeDefinition id="eduPersonScopedAffiliation" xsi:type="Scoped"
-                         scope="berkeley.edu" sourceAttributeID="eduPersonAffiliation">
-        <Dependency ref="eduPersonAffiliation" />
-
-        <AttributeEncoder xsi:type="SAML2ScopedString"
+    <AttributeDefinition id="eduPersonScopedAffiliation" xsi:type="Scoped" scope="berkeley.edu" >
+        <InputAttributeDefinition ref="eduPersonAffiliation" />
+        <AttributeEncoder xsi:type="SAML2ScopedString" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.1.1.9" friendlyName="eduPersonScopedAffiliation" />
     </AttributeDefinition>
 
@@ -297,20 +259,11 @@
     <!-- created for Hashi Trust (INC1119046)-->
     <!-- Allows certain affiliate types to have the affiliate value where others will only get member -->
     <!-- AFFILIATE-TYPE-LBL/DOE POSTDOC, AFFILIATE-TYPE-VISITING STU RESEARCHER, AFFILIATE-TYPE-VISITING SCHOLAR -->
-    <DataConnector  xsi:type="Static" id="forEduPersonAffiliationHT">
-        <Attribute id="eduPersonAffiliationHT">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
-    <AttributeDefinition id="eduPersonAffiliationHT"
-                         xsi:type="ScriptedAttribute" >
-        <Dependency ref="LDAP" />
-        <Dependency ref="forEduPersonAffiliationHT" />
-        <Dependency ref="berkeleyEduAffiliations" />
+    <AttributeDefinition id="eduPersonAffiliationHT" xsi:type="ScriptedAttribute" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduAffiliations" />
         <DisplayName xml:lang="en">eduPersonAffiliation</DisplayName>
         <DisplayDescription xml:lang="en">Affiliations in eduPerson format.</DisplayDescription>
-        <AttributeEncoder xsi:type="SAML2String"
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" friendlyName="eduPersonAffiliation" />
         <Script>
             <![CDATA[
@@ -333,7 +286,7 @@
                                     berkeleyEduAffiliations.getValues().get(i).toUpperCase().contains("AFFILIATE-TYPE-VISITING SCHOLAR")) {
                                         eduPersonAffiliationHT.addValue("affiliate");
                         }
-		}
+		        }
                 if ( eduPersonAffiliationHT.getValues().contains("staff") ||
                                 eduPersonAffiliationHT.getValues().contains("faculty")) {
                                 eduPersonAffiliationHT.addValue("employee");
@@ -341,83 +294,58 @@
 
                 eduPersonAffiliationHT.addValue("member");
 
-                ]]>
+            ]]>
         </Script>
     </AttributeDefinition>
 
 
     <!-- eduPersonScopedAffiliationHT -->
     <!-- This attribute is created for Hashi Trust -->
-    <AttributeDefinition id="eduPersonScopedAffiliationHT" xsi:type="Scoped"
-                         scope="berkeley.edu" sourceAttributeID="eduPersonAffiliationHT">
-        <Dependency ref="eduPersonAffiliationHT" />
-
-        <AttributeEncoder xsi:type="SAML2ScopedString"
+    <AttributeDefinition id="eduPersonScopedAffiliationHT" xsi:type="Scoped" scope="berkeley.edu" >
+        <InputAttributeDefinition ref="eduPersonAffiliationHT" />
+        <AttributeEncoder xsi:type="SAML2ScopedString" encodeType="false"
                           name="urn:oid:1.3.6.1.4.1.5923.1.1.1.9" friendlyName="eduPersonScopedAffiliation" />
     </AttributeDefinition>
 
 
 
     <!-- UCShortId -->
-
-    <DataConnector  xsi:type="Static" id="forUCShortId">
-        <Attribute id="UCShortId">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
-
-    <AttributeDefinition id="UCShortId"
-                         xsi:type="ScriptedAttribute" >
-        <Dependency ref="uid" />
-        <AttributeEncoder xsi:type="SAML2String"
-                          name="urn:oid:2.16.840.1.113916.1.1.7"
-                          friendlyName="UCShortId" />
+    <AttributeDefinition id="UCShortId" xsi:type="ScriptedAttribute" >
+        <InputDataConnector ref="LDAP" attributeNames="uiid" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113916.1.1.7" friendlyName="UCShortId" />
         <Script>
             <![CDATA[
-		UCShortId.getValues().clear(); // remove the dummy value
                	UCShortId.getValues().add("BE" + uid.getValues());
-               ]]>
+            ]]>
         </Script>
     </AttributeDefinition>
 
 
     <!-- UC Trust level of assurance  oid -->
-    <!-- We will look to see if the person is staff, and assert the basic assurance -->
-
-    <DataConnector xsi:type="Static" id="forBasicAssurance">
-        <Attribute id="basicAssurance">
-            <Value>dummy</Value>
-        </Attribute>
-    </DataConnector>
-
+    <!-- We will look to see if the person is an employee, and assert the basic assurance -->
     <AttributeDefinition id="basicAssurance"
                          xsi:type="ScriptedAttribute" >
-        <Dependency ref="eduPersonAffiliation" />
-        <AttributeEncoder xsi:type="SAML2String"
-                          name="urn:oid:2.16.840.1.113916.1.1.5"
-                          friendlyName="basicAssurance" />
+        <InputAttributeDefinition ref="eduPersonAffiliation" />
+        <AttributeEncoder xsi:type="SAML2String" encodeType="false"
+                          name="urn:oid:2.16.840.1.113916.1.1.5" friendlyName="basicAssurance" />
         <Script>
             <![CDATA[
-		basicAssurance.getValues().clear(); // remove the dummy value
-		for (var i=0;
-			i < eduPersonAffiliation.getValues().size() &&
-			eduPersonAffiliation.getValues().get(i) != null; i++) {
-    		  if (eduPersonAffiliation.getValues().get(i).toLowerCase().contains("employee")) {
-                         basicAssurance.getValues().add("urn:mace:universityofcalifornia.edu:ucidentity:attributes:assurance:basic");
-		  }
-		}
-                ]]>
+                for (var i=0;
+                    i < eduPersonAffiliation.getValues().size() &&
+                    eduPersonAffiliation.getValues().get(i) != null; i++) {
+                    if (eduPersonAffiliation.getValues().get(i).toLowerCase().contains("employee")) {
+                        basicAssurance.getValues().add("urn:mace:universityofcalifornia.edu:ucidentity:attributes:assurance:basic");
+                  }
+                }
+            ]]>
         </Script>
     </AttributeDefinition>
 
 
-
     <!-- bekps -->
-    <AttributeDefinition id="bekps" xsi:type="Simple"
-                         sourceAttributeID="berkeleyEduKerberosPrincipalString">
-        <Dependency ref="LDAP" />
-
+    <AttributeDefinition id="bekps" xsi:type="Simple" >
+        <InputDataConnector ref="LDAP" attributeNames="berkeleyEduKerberosPrincipalString" />
         <AttributeEncoder xsi:type="SAML2String"
                           name="urn:oid:1.3.6.1.4.1.4995.2.200.10.1.5.4" friendlyName="berkeleyEduKerberosPrincipalString" />
     </AttributeDefinition>
