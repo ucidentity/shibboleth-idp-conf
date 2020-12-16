@@ -510,9 +510,6 @@
         <AttributeEncoder xsi:type="SAML2String" name="IDPEmail" friendlyName="UserId" />
     </AttributeDefinition>
     <!-- end mail for Azure AD User ID -->
-
-
-
     
 
     <!-- ========================================== -->
